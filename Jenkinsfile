@@ -4,9 +4,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-             
-                 echo 'Testing..'
-            }
+                echo 'Building..'
+                bat "call mvn clean"
             }
         }
         stage('Test') {
@@ -16,9 +15,8 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-              
                 echo 'Deploying....'
             }
         }
     }
-
+}
