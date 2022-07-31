@@ -5,7 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                bat "call mvn clean"
+                echo "${M2_HOME}"
+              
             }
         }
         stage('Test') {
