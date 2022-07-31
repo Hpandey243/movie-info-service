@@ -1,0 +1,22 @@
+[{
+  "type": "planets",
+  "count": 1,
+  "name": "Yavin IV",
+  "films": [
+    {
+      "title": "A New Hope",
+      "director": "George Lucas"
+    }
+  ]
+},
+  {
+    "type": "planets",
+    "count": 1,
+    "name": "C-3PO",
+    "films": [
+      {
+        "title": "The Empire Strikes Back",
+        "director": "George Lucas"
+      }
+    ]
+  }]
