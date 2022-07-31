@@ -18,6 +18,7 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/movieInfo")
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 public class MovieDetailsController {
     private final static Logger LOGGER = LoggerFactory.getLogger(MovieDetailsController.class);
     @Autowired
@@ -34,9 +35,11 @@ public class MovieDetailsController {
             throws MicroserviceException, IOException {
 
         if (offlineMode) {
+            LOGGER.info("Fetching data in offline mode for type {}",type);
             return new ResponseEntity<Details>(offlineMovieInfoService.getDetails(type, name), HttpStatus.OK);
 
         }
+        LOGGER.info("Fetching data  for type {}",type);
         return new ResponseEntity<Details>(movieInfoService.fetchMovieInfo(type, name), HttpStatus.OK);
 
     }
