@@ -28,10 +28,10 @@ public class MovieInfoServiceImpl implements MovieInfoService {
         details.setCount(detailsInfo.getCount());
         details.setName(name);
         details.setType(type);
-        details.setFilms(fetchFilmDetails(detailsInfo.getResults()));
-
+        if(!type.equals("films")){
+            details.setFilms(fetchFilmDetails(detailsInfo.getResults()));
+        }
         return details;
-
     }
 
     private List<Film> fetchFilmDetails(List<ResultDTO> results) {
@@ -48,6 +48,5 @@ public class MovieInfoServiceImpl implements MovieInfoService {
 
         });
         return filmList;
-
     }
 }

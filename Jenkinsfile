@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                sh "mvn clean install"
             }
         }
         stage('Test') {
@@ -14,6 +14,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+              sh "java -jar ${WORKSPACE}/target/movie-info-service-0.0.1-SNAPSHOT.jar"
                 echo 'Deploying....'
             }
         }
