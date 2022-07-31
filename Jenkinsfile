@@ -5,23 +5,26 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-               "Building"
+                sh './gradlew assemble'
             }
         }
         stage('Test') {
             steps {
-                echo "Tetsing"
+                sh './gradlew test'
             }
         }
         stage('Build Docker image') {
             steps {
-                echo "Building"
+                sh './gradlew docker'
             }
         }
         stage('Push Docker image') {
-           
+            environment {
+                DOCKER_HUB_LOGIN = credentials('docker-hub')
+            }
             steps {
-              echo "Pushing"
+                sh 'docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW'
+                sh './gradlew dockerPush'
             }
         }
-    }
+  
