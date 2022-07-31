@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh "mvn clean install"
+               bat "cmd /c mvn clean install"
             }
         }
         stage('Test') {
